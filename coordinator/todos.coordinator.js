@@ -5,7 +5,7 @@ export default class ToDosCoordinator {
 	static getToDos = () => {
 		console.log('\t Coordinator : getToDos');
 
-		return ToDosModel.getToDos(); // this is what ToDosCoordinator.getToDos returns.  The return statement from ToDosModel.getToDos. Which if we look at that function in the todos.model file, we see is the toDos array that is simulating our DB.
+		return ToDosModel.getToDos(); 
 	};
 
 	static createToDo = (newToDo) => { 
