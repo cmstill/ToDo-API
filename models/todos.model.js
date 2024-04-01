@@ -17,15 +17,15 @@ let toDos = [
 ];
 export default class ToDosModel {
 	static getToDos = () => {
-		console.log('Got full list of ToDos:')
-		console.log(toDos); 
+		console.log('Got full list of ToDos:');
+		console.log(toDos);
 		return toDos;
 	};
 
 	static createToDo = (newToDo) => {
 		toDos.push(newToDo);
-		console.log('Created new ToDo:')
-		console.log(newToDo); 
+		console.log('Created new ToDo:');
+		console.log(newToDo);
 		return newToDo;
 	};
 
@@ -65,7 +65,6 @@ export default class ToDosModel {
 			console.log(`Updated ToDo at ${id}`, toDos[toDoIndex]);
 			return toDos[toDoIndex];
 		}
-
 
 		return false;
 	};

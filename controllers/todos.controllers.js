@@ -13,7 +13,7 @@ export const getToDo = async (req, res, next) => {
 		res.status(200).json(result);
 	} else {
 		res.status(404).json('The ToDo you requested does not exist');
-	}
+	};
 };
 
 export const createToDo = async (req, res, next) => {
@@ -50,6 +50,5 @@ export const deleteToDo = async (req, res, next) => {
 	} else {
 		res.status(404).json('The ToDo you requested does not exist')
 	};
-	
-}
+};
 	
