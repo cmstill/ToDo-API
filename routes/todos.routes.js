@@ -14,7 +14,7 @@ const todosRouter = express.Router();
 todosRouter.get('/', getToDos);
 
 // GET /api/v1/todos<id>
-todosRouter.get('/:id', getToDo) 
+todosRouter.get('/:id', getToDo);
 
 // POST todo route
 todosRouter.post('/', createToDo);

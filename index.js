@@ -16,6 +16,6 @@ app.patch('/api/v1/todos/:id', middleware());
 app.use('/api/v1/todos', todosRouter);
 
 app.listen(port, () => {
-	console.log('Starting todo application on port 8080')
+	console.log('Starting todo application on port 8080');
 });
 
