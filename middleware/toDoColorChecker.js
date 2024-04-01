@@ -11,10 +11,10 @@ const middleware = () => (req, res, next) => {
 		 req.body.hexColor = colors[1];
 	 } else if (req.body && req.body.color.toLowerCase() === 'blue') {
 		 req.body.hexColor = colors[2];
-	 }
+	 } 
 
 	 next();
- };
+ };// todo: fix this.  currently does not remove hexcolor property when color changed from one of these options
 
  export default middleware;
 

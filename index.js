@@ -10,9 +10,10 @@ const port = 8080;
 app.use(json());
 
 app.post('/api/v1/todos', middleware());
+app.put('/api/v1/todos/:id', middleware());
+app.patch('/api/v1/todos/:id', middleware());
 
-
-app.use('/api/v1/todos', todosRouter)
+app.use('/api/v1/todos', todosRouter);
 
 app.listen(port, () => {
 	console.log('Starting todo application on port 8080')
