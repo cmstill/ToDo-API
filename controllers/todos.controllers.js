@@ -1,7 +1,9 @@
 import ToDosCoordinator from "../coordinator/todos.coordinator.js";
 
 export const getToDos = async (req, res, next) => {
-	const result = ToDosCoordinator.getToDos(); 
+	const result = ToDosCoordinator.getToDos();
+
+	res.status(200).json(result);
 };
 
 export const getToDo = async (req, res, next) => {
@@ -15,13 +17,13 @@ export const getToDo = async (req, res, next) => {
 };
 
 export const createToDo = async (req, res, next) => {
-	const result = ToDosCoordinator.createToDo(req.body); 
+	const result = ToDosCoordinator.createToDo(req.body);
 
 	res.status(201).json(result);
 };
 
 export const replaceToDo = async (req, res, next) => {
-	const result = ToDosCoordinator.replaceToDo(req.params.id, req.body); 
+	const result = ToDosCoordinator.replaceToDo(req.params.id, req.body);
 
 	if (result) {
 		res.status(200).json(result);

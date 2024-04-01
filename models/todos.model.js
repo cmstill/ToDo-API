@@ -1,24 +1,20 @@
 let toDos = [
 	{
-		id: '1',
 		name: 'Study JavaScript',
+		id: '1',
 		color: 'Green'
 	},
 	{
-		id: '2',
 		name: 'Go to the gym',
+		id: '2',
 		color: 'Blue'
 	},
 	{
-		id: '3',
 		name: 'Pick up groceries',
+		id: '3',
 		color: 'Chartreuse'
 	}
 ];
-
-// 7. In your model, print the todo object to the console when it is provided by user input (PUT, POST, PATCH). Hard code a small array of three items in your model to simulate a database. Return this array for the "get all todos" logic and search it to return a single item for "get one todo by ID". Return a 404 if the requested ID does not exist.
-
-
 export default class ToDosModel {
 	static getToDos = () => {
 		console.log('Got full list of ToDos:')
@@ -48,11 +44,10 @@ export default class ToDosModel {
 		const toDoIndex = toDos.findIndex((item) => (item.id === id));
 
 		if (toDoIndex > -1) {
+			console.log(`Replaced toDo at ${id}`, 'with:', replacedToDo);
 			toDos.splice(toDoIndex, 1, replacedToDo);
 			return replacedToDo;
 		}
-
-		console.log(replacedToDo); // this not working.  troubleshoot
 
 		return false;
 	};
@@ -67,12 +62,10 @@ export default class ToDosModel {
 				}
 				toDos[toDoIndex][key] = toDo[key];
 			});
-
+			console.log(`Updated ToDo at ${id}`, toDos[toDoIndex]);
 			return toDos[toDoIndex];
-
 		}
 
-		console.log(toDo);
 
 		return false;
 	};
