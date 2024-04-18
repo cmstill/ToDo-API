@@ -1,0 +1,13 @@
+[
+{
+	"name": "Study JavaScript",
+	"id": "1",
+	"color": "Green"
+},
+
+{
+	"name": "Go to the gym",
+	"id": "2",
+	"color": "Blue"
+}
+]

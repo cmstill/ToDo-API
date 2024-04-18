@@ -1,0 +1,12 @@
+Continuing from lab #7, add everything to make it a "real" API with MongoDB integration, linting, validation, and unit tests.
+
+Create a database class as a global singleton to maintain a MongoDB connection pool.
+Replace the memory mocks in the Model with a reference to the new database class.
+Create a JSON schema to describe the input and output of the application.
+Use the JSON schema to validate user input. Return an appropriate HTTP status code and the validation failure message when user input is invalid.
+Create an OpenAPI spec that documents your API and covers :
+All endpoints
+Request bodies
+Responses
+Parameters
+Add linting using the airbnb-base configuration

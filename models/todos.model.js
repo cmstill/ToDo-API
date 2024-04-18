@@ -1,3 +1,5 @@
+import db  from '../lib/database.js';
+
 let toDos = [
 	{
 		name: 'Study JavaScript',
@@ -15,13 +17,24 @@ let toDos = [
 		color: 'Chartreuse'
 	}
 ];
+
 export default class ToDosModel {
-	static getToDos = () => {
+	/**
+	 * getToDos - return a list of toDos from the simulated DB array
+	 * @returns - {Array} - An array of ToDo objects
+	 */
+	static getToDos = async () => {
 		console.log('Got full list of ToDos:');
-		console.log(toDos);
-		return toDos;
+		//return toDos;
+		
+		return db.getDb().collection('todos').find({}).toArray();// this is returning a promise and that goes all the way up to the controller that is awaiting that promise
 	};
 
+/**
+ * createToDo - accepts newToDo, an object that starts out as req.body, adds that ToDo to DB, returns newToDo 
+ * @param {Object} newToDo - new ToDo to create in DB
+ * @returns {Object} - An object that holds properties of new ToDo
+ */
 	static createToDo = (newToDo) => {
 		toDos.push(newToDo);
 		console.log('Created new ToDo:');

@@ -13,7 +13,7 @@ const colors = [
  		 req.body.hexColor = colors[2];
 	 } 
  	 next();
-  };// todo: fix this.  currently does not remove hexcolor property when color changed from one of these options
+  };// todo: fix this.  currently does not remove hexcolor property when color changed from one of these options 
 
  export default middleware;
 

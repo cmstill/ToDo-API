@@ -7,6 +7,7 @@ export default class ToDosCoordinator {
 	};
 
 	static createToDo = (newToDo) => { 
+
 		const toDo = {
 			...newToDo,
 			id: nanoid(5),
