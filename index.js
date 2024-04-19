@@ -2,7 +2,8 @@ import express from 'express';
 import middleware from './middleware/toDoColorChecker.js';
 import bodyParser from 'body-parser';
 import errorMiddleware from './middleware/errorHander.js';
-import db  from './lib/database.js';
+import db from './lib/database.js';
+import config from 'config';
 
 const { json } = bodyParser;
 
@@ -20,15 +21,18 @@ app.use('/api/v1/todos', todosRouter);
 
 app.use('/api/v1/todos', errorMiddleware()); // error handling middleware has to be used last in express.
 
-const config = {
-	url: 'mongodb://127.0.0.1:27017',
-	database: 'arca',
-};
+const mongoConfig = config.get('mongo');
+// {
+	// 	url: 'mongodb://127.0.0.1:27017',
+	// 	database: 'arca',
+	// 	minPoolSize: 3,
+	// 	maxPoolSize: 10,
+	// };
 
 
-db.init(config);
+	db.init(mongoConfig); //mongoConfig is the variable above that is the configuration settings in the localhost.json in config folder
 
-app.listen(port, () => {
-	console.log(`Starting todo application on port ${port}  @ ${new Date().toISOString()}`);
-});
+	app.listen(port, () => {
+		console.log(`Starting todo application on port ${port}  @ ${new Date().toISOString()}`);
+	});
 

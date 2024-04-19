@@ -60,7 +60,7 @@ export const replaceToDo = async (req, res, next) => {
 export const updateToDo = async (req, res, next) => {
 
 	try {
-		const result =  ToDosCoordinator.updateToDo(req.params.id, req.body)
+		const result = ToDosCoordinator.updateToDo(req.params.id, req.body) //await this if oyu end up having problems
 
 		if (result) {
 			res.status(200).json(result);

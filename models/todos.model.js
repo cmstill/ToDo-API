@@ -84,14 +84,15 @@ export default class ToDosModel {
 			update.$set[key] = toDo[key]; // what is going on here?
 		});
 
-		const result = db.getDb().collection(Constants.TODOS_COLLECTION).updateOne({ id }, update);
+		const result = db.getDb().collection(Constants.TODOS_COLLECTION).findOneAndUpdate({ id }, update, { returnDocument: 'after' });
 
-		if (result.matchedCount === 1) {
-			return replacedToDo;
+		if (result) {
+			delete result._id;
+			return result; // for some reason this isn't returning the entire result document from the findOneAndUpdate 
 		}
 
-		return false;
-	};
+		 return false;
+	}; 
 
 	static deleteToDo = (id) => { // on postman, this hangs up but on the backend prints what I deleted to the console.  Also the deletion does happen. 
 
