@@ -1,13 +1,14 @@
+/* eslint-disable max-len */
 import express from 'express';
-import middleware from './middleware/toDoColorChecker.js';
+import config from 'config';
 import bodyParser from 'body-parser';
+import middleware from './middleware/toDoColorChecker.js';
 import errorMiddleware from './middleware/errorHander.js';
 import db from './lib/database.js';
-import config from 'config';
-
-const { json } = bodyParser;
 
 import todosRouter from './routes/todos.routes.js';
+
+const { json } = bodyParser;
 
 const app = express();
 const port = 8080;
@@ -23,16 +24,14 @@ app.use('/api/v1/todos', errorMiddleware()); // error handling middleware has to
 
 const mongoConfig = config.get('mongo');
 // {
-	// 	url: 'mongodb://127.0.0.1:27017',
-	// 	database: 'arca',
-	// 	minPoolSize: 3,
-	// 	maxPoolSize: 10,
-	// };
+// 	url: 'mongodb://127.0.0.1:27017',
+// 	database: 'arca',
+// 	minPoolSize: 3,
+// 	maxPoolSize: 10,
+// };
 
+db.init(mongoConfig); // mongoConfig is the variable above that is the configuration settings in the localhost.json in config folder
 
-	db.init(mongoConfig); //mongoConfig is the variable above that is the configuration settings in the localhost.json in config folder
-
-	app.listen(port, () => {
-		console.log(`Starting todo application on port ${port}  @ ${new Date().toISOString()}`);
-	});
-
+app.listen(port, () => {
+  console.log(`Starting todo application on port ${port}  @ ${new Date().toISOString()}`);
+});

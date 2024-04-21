@@ -1,11 +1,11 @@
 import express from 'express';
-import { 
-	getToDos, 
-	createToDo, 
-	getToDo, 
-	replaceToDo, 
-	updateToDo, 
-	deleteToDo 
+import {
+  getToDos,
+  createToDo,
+  getToDo,
+  replaceToDo,
+  updateToDo,
+  deleteToDo,
 } from '../controllers/todos.controllers.js';
 
 const todosRouter = express.Router();
@@ -28,9 +28,4 @@ todosRouter.patch('/:id', updateToDo);
 // DELETE todo route
 todosRouter.delete('/:id', deleteToDo);
 
-
-export default todosRouter; 
-
-
-
-
+export default todosRouter;
