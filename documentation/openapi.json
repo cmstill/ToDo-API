@@ -1,0 +1,233 @@
+{
+	"openapi": "3.0.1",
+	"info": {
+		"title": "ToDos API",
+		"description": "Create and manage a list of ToDos",
+		"version": "1.0.0"
+	},
+	"components": {
+		"schema": {
+			"todo": {
+				"$ref": "../schemas/todo.json"
+			}
+		}
+	},
+	"paths": {
+		"/api/v1/todos": {
+			"get": {
+				"description": "Get a list of ToDos",
+				"summary": "ToDo list",
+				"operationId": "getToDos",
+				"responses": {
+					"200": {
+						"description": "List of ToDos response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"items": {
+										"$ref": "#/components/schema/todo"
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"post": {
+				"description": "Create a new ToDo",
+				"summary": "Create ToDo",
+				"operationId": "createToDo",
+				"responses": {
+					"201": {
+						"description": "Created a new ToDo successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"items": {
+										"$ref": "#/components/schema/todo"
+									}
+								}
+							}
+						}
+					}
+				},
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"items": {
+									"$ref": "#/components/schema/todo"
+								}
+							}
+						}
+					}
+				}
+			},
+			"/api/v1/todos/{id}": {
+				"get": {
+					"parameters": [
+						{
+							"name": "id",
+							"in": "path",
+							"required": true,
+							"schema": {
+								"type": "string"
+							}
+						}
+					],
+					"responses": {
+						"200": {
+							"description": "Get a ToDo by ID",
+							"content": {
+								"application/json": {
+									"schema": {
+										"type": "object",
+										"items": {
+											"$ref": "#/components/schema/todo"
+										}
+									}
+								}
+							}
+						},
+						"404": {
+							"description": "Failed to get a ToDo by ID"
+						}
+					}
+				},
+				"put": {
+					"description": "replace a ToDo by ID provided",
+					"summary": "replace ToDo",
+					"operationId": "replaceToDo",
+					"requestBody": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"$ref": "#/components/schema/todo"
+								}
+							}
+						}
+					},
+					"parameters": [
+						{
+							"name": "id",
+							"in": "path",
+							"required": true,
+							"schema": {
+								"type": "sring"
+							}
+						}
+					],
+					"responses": {
+						"200": {
+							"description": "Replaced ToDo",
+							"content": {
+								"application/json": {
+									"schema": {
+										"type": "object",
+										"$ref": "#/components/schema/todo"
+									}
+								}
+							}
+						},
+						"404": {
+							"description": "No ToDo with that ID exists",
+							"content": {
+								"application/json": {
+									"schema": {
+										"type": "object",
+										"items": {
+											"$ref": "#/components/schema/todo"
+										}
+									}
+								}
+							}
+						}
+					},
+					"patch": {
+						"description": "Update given properties on Todo by ID provided",
+						"summary": "Update ToDo",
+						"operationId": "updateToDo",
+						"requestBody": {
+							"content": {
+								"application/json": {
+									"type": "object",
+									"items": {
+										"$ref": "#/components/schema/todo"
+									}
+								}
+							}
+						},
+						"parameters": [
+							{
+								"name": "id",
+								"in": "path",
+								"required": true,
+								"schema": {
+									"type": "sring"
+								}
+							}
+						],
+						"responses": {
+							"200": {
+								"description": "Replaced ToDo",
+								"content": {
+									"application/json": {
+										"schema": {
+											"type": "object",
+											"$ref": "#/components/schema/todo"
+										}
+									}
+								}
+							},
+							"404": {
+								"description": "No ToDo with that ID exists",
+								"content": {
+									"application/json": {
+										"schema": {
+											"type": "object",
+											"items": {
+												"$ref": "#/components/schema/todo"
+											}
+										}
+									}
+								}
+							}
+						},
+						"delete": {
+							"description": "Delete Todo by given ID",
+							"summary": "Delete ToDo",
+							"operationId": "deleteToDo",
+							"parameters": [
+								{
+									"name": "id",
+									"in": "path",
+									"required": true,
+									"schema": {
+										"type": "sring"
+									}
+								}
+							],
+							"responses": {
+								"204": {
+									"description": "Replaced ToDo",
+									"content": {
+										"application/json": {
+											"schema": {
+												"type": "object",
+												"$ref": "#/components/schema/todo"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

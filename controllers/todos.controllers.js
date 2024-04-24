@@ -11,7 +11,7 @@ import ToDosCoordinator from '../coordinator/todos.coordinator.js';
 
 export const getToDos = async (req, res, next) => {
   try {
-    const result = await ToDosCoordinator.getToDos(); // why is this awaited?
+    const result = await ToDosCoordinator.getToDos();
 
     res.status(200).json(result);
   } catch (ex) {
@@ -21,8 +21,7 @@ export const getToDos = async (req, res, next) => {
 
 export const getToDo = async (req, res, next) => {
   try {
-    const result = await ToDosCoordinator.getToDo(req.params.id); // this needs to be awaited now because our getToDo function in model is now returning a promise
-
+    const result = await ToDosCoordinator.getToDo(req.params.id);
     if (result) {
       res.status(200).json(result);
     } else {
@@ -34,11 +33,11 @@ export const getToDo = async (req, res, next) => {
 };
 
 export const createToDo = async (req, res, next) => {
-  try { // this is all to catch the errors that will be picked up by our error handler middleware
+  try {
     const result = ToDosCoordinator.createToDo(req.body);
     res.status(201).json(result);
-  } catch (ex) { // ex here is a variable that holds the error that gets generated when an error occurs
-    next(ex); // this this is where you pass that error in variable ex so it can be accessed
+  } catch (ex) {
+    next(ex);
   }
 };
 
@@ -58,7 +57,7 @@ export const replaceToDo = async (req, res, next) => {
 
 export const updateToDo = async (req, res, next) => {
   try {
-    const result = ToDosCoordinator.updateToDo(req.params.id, req.body); // await this if oyu end up having problems
+    const result = ToDosCoordinator.updateToDo(req.params.id, req.body);
 
     if (result) {
       res.status(200).json(result);

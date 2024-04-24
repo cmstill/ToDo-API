@@ -1,11 +1,14 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://127.0.0.1/Users/cameronstill/TODO-API-MONGO/ToDo-API",
-  "title": "Todo",
-  "description": "Schema for todos",
-  "type": "object",
-	"required": ["id", "name"],
-  "properties": {
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "http://127.0.0.1/Users/cameronstill/TODO-API-MONGO/ToDo-API",
+	"title": "Todo",
+	"description": "Schema for todos",
+	"type": "object",
+	"required": [
+		"id",
+		"name"
+	],
+	"properties": {
 		"id": {
 			"description": "The unique id for this ToDo in uuid format",
 			"type": "string",
@@ -19,12 +22,16 @@
 		"color": {
 			"description": "Color associated with this ToDo",
 			"type": "string",
-			"enum": ["red", "green", "blue"]
+			"enum": [
+				"red",
+				"green",
+				"blue"
+			]
 		},
 		"date": {
 			"description": "Date that this ToDo was created",
 			"type": "string",
-			"format": "date-time" 
+			"format": "date-time"
 		}
-  }
+	}
 }

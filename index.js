@@ -20,17 +20,11 @@ app.patch('/api/v1/todos/:id', middleware());
 
 app.use('/api/v1/todos', todosRouter);
 
-app.use('/api/v1/todos', errorMiddleware()); // error handling middleware has to be used last in express.
+app.use('/api/v1/todos', errorMiddleware());
 
 const mongoConfig = config.get('mongo');
-// {
-// 	url: 'mongodb://127.0.0.1:27017',
-// 	database: 'arca',
-// 	minPoolSize: 3,
-// 	maxPoolSize: 10,
-// };
 
-db.init(mongoConfig); // mongoConfig is the variable above that is the configuration settings in the localhost.json in config folder
+db.init(mongoConfig);
 
 app.listen(port, () => {
   console.log(`Starting todo application on port ${port}  @ ${new Date().toISOString()}`);

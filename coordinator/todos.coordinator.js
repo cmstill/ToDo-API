@@ -6,8 +6,8 @@ import ToDosModel from '../models/todos.model.js';
 import todoSchema from '../schemas/todo.json' assert { type: 'json' };
 
 const ajv = new Ajv();
-addFormats(ajv); // this is using the ajvformats module to pass ajv into it to extend it so we can use ajv formats
-const validate = ajv.compile(todoSchema); // this is calling a method on ajv class that we imported above called compile that we then pass our todoSchema we defined in schema folder...I guess compile method probably is a parser function on ajv class
+addFormats(ajv); 
+const validate = ajv.compile(todoSchema); 
 
 export default class ToDosCoordinator {
 	static getToDos = () => {
@@ -18,7 +18,7 @@ export default class ToDosCoordinator {
 		const toDo = {
 			...newToDo,
 			id: uuidv4(),
-			Date: Date(), // added date property for each todo
+			Date: new Date().toISOString, 
 		};
 
 		const valid = validate(toDo);
@@ -26,7 +26,7 @@ export default class ToDosCoordinator {
 		if (!valid) {
 			throw validate.errors;
 		}
-		// validation for ID property has to be done AFTER you add the ID property above otherwise there's no ID to validate
+	
 
 		return ToDosModel.createToDo(toDo);
 	};

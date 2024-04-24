@@ -1,6 +1,4 @@
-const errorMiddleware = () => (err, req, res, next) => { // remember error handler middleware takes 4 params with err being the first one.  err is whatever error occured
-  console.error(`ERROR : The following error occured : ${err}`);
-
+const errorMiddleware = () => (err, req, res, next) => {
   let error;
   let responseCode = 500;
 
@@ -8,12 +6,11 @@ const errorMiddleware = () => (err, req, res, next) => { // remember error handl
     error = err;
     responseCode = 400;
   } else {
-    error = 'This is bad';
+    error = 'An error has occured';
   }
 
-  // TODO: Send response to client.
   res.status(responseCode).json({
-    error,// something here is making us log object object
+    error,
   });
 };
 

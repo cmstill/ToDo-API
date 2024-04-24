@@ -16,4 +16,3 @@ const colors = [
   };// todo: fix this.  currently does not remove hexcolor property when color changed from one of these options 
 
  export default middleware;
-
